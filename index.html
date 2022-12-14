@@ -8,38 +8,74 @@
    </head>
 
    <body>
-    <script>
-        function getComputerChoice () {
-            let choices = ["Rock","Paper","Scissors"];
-            let randomChoice = choices[Math.floor(Math.random() * choices.length)];
-            console.log(randomChoice);
-        }
-        getComputerChoice();
+    <button> Button</button>
+    
 
-        function playRound (computerChoice, playerChoice) {
+
+
+    <script>
+        let playerPoints= 0
+        let computerPoints= 0
+
+        function getComputerChoice () {
+            let choices = ["rock","paper","scissors"];
+            let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+            return randomChoice;
+        }
+
+        function playRound(playerChoice, computerChoice) {
             if (playerChoice === computerChoice) {
                 return ("Even steven!");
             }
-            else if (playerChoice === "Rock" && computerChoice === "Scissors") {
-                return ("You win!!!")
+            else if (playerChoice === "rock" && computerChoice === "scissors") {
+                playerPoints++
+                return ("You win!!!");
             }
-            else if (playerChoice === "Rock" && computerChoice === "Paper") {
-                return ("You lost")
+            else if (playerChoice === "rock" && computerChoice === "paper") {
+                computerPoints++
+                return ("You lost");
             }
-            else if (playerChoice === "Paper" && computerChoice === "Scissors") {
-                return ("You lost")
+            else if (playerChoice === "paper" && computerChoice === "scissors") {
+                computerPoints++
+                return ("You lost");
             }
-            else if (playerChoice === "Paper" && computerChoice === "Rock") {
-                return ("You win!!!")
+            else if (playerChoice === "paper" && computerChoice === "rock") {
+                playerPoints++
+                return ("You win!!!");
             }
-            else if (playerChoice === "Scissors" && computerChoice === "Rock") {
-                return ("You lost")
+            else if (playerChoice === "scissors" && computerChoice === "rock") {
+                computerPoints++
+                return ("You lost");
             }
-            else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-                return ("You win!!!")
+            else if (playerChoice === "scissors" && computerChoice === "paper") {
+                playerPoints++
+                return ("You win!!!");
             }
         }
+
+        
+
+             function game() {
+                    for (let i = 0; i < 5; i++) {
+                        let playerChoice = prompt ("Choose your weapon", "rock, paper, scissors").toLowerCase()
+                        let computerChoice = getComputerChoice ();
+                        playRound (playerChoice, computerChoice);
+                        }
+                    
+                    if (playerPoints > computerPoints) {
+                        return "You beat the computer"
+                    }    else if (playerPoints < computerPoints) {
+                        return "Computer just beat you!!"
+                    }   else {
+                        return "You tied with it"
+                    }
+                }
+
+        console.log(game())
+
     </script>
+
+    
 
    </body>
 
